@@ -405,18 +405,79 @@ if (themeToggle) {
 }
 
 
-// --- Contact Form Handling ---
+// --- Contact Form Handling (Hardened) ---
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
+        // Inject hidden honeypot field (bots fill this, humans don't see it)
+        const honeypot = document.createElement('input');
+        honeypot.type = 'text';
+        honeypot.name = '_honeypot';
+        honeypot.id = '_honeypot';
+        honeypot.tabIndex = -1;
+        honeypot.autocomplete = 'off';
+        honeypot.style.cssText = 'opacity:0;position:absolute;top:0;left:0;height:0;width:0;z-index:-1;overflow:hidden;pointer-events:none;';
+        honeypot.setAttribute('aria-hidden', 'true');
+        contactForm.prepend(honeypot);
+
+        // Client-side rate limiter
+        let submitTimestamps = [];
+        const CLIENT_RATE_LIMIT = 3;        // max submissions
+        const CLIENT_RATE_WINDOW = 60000;   // per minute
+
+        // Sanitizer
+        function sanitizeInput(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML.trim();
+        }
+
+        // Email validator
+        function isValidEmail(email) {
+            return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email) && email.length <= 254;
+        }
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const message = document.getElementById('form-message').value;
+            // Honeypot check — if filled, silently reject
+            if (honeypot.value) {
+                contactForm.reset();
+                return;
+            }
+
+            // Client-side rate limit
+            const now = Date.now();
+            submitTimestamps = submitTimestamps.filter(ts => now - ts < CLIENT_RATE_WINDOW);
+            if (submitTimestamps.length >= CLIENT_RATE_LIMIT) {
+                alert('You are submitting too quickly. Please wait a moment.');
+                return;
+            }
+            submitTimestamps.push(now);
+
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const message = document.getElementById('form-message').value.trim();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            
+
+            // Field validation
+            if (!name || !email || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            if (name.length > 100) {
+                alert('Name must be under 100 characters.');
+                return;
+            }
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (message.length > 2000) {
+                alert('Message must be under 2000 characters.');
+                return;
+            }
+
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
@@ -427,17 +488,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ name, email, message })
+                    body: JSON.stringify({
+                        name: sanitizeInput(name),
+                        email: sanitizeInput(email),
+                        message: sanitizeInput(message),
+                        _honeypot: honeypot.value
+                    })
                 });
 
                 if (response.ok) {
                     alert('Message sent successfully! Thank you for reaching out.');
                     contactForm.reset();
+                } else if (response.status === 429) {
+                    alert('Too many requests. Please wait a moment before trying again.');
                 } else {
-                    alert('Failed to send message. Please try again later.');
+                    const data = await response.json().catch(() => ({}));
+                    alert(data.error || 'Failed to send message. Please try again later.');
                 }
             } catch (error) {
-                console.error('Error:', error);
                 alert('An error occurred. Please check your connection and try again.');
             } finally {
                 submitBtn.textContent = originalText;
