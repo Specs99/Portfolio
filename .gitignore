@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Sensitive files
+discord_backup_codes.txt
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Gemini / Antigravity skills (not part of the portfolio)
+skills/
+
+# Old portfolio reference (not for deployment)
+old portfolio just for information and links extraction/
+
+# Vercel
+.vercel/

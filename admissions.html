@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mustafa Hamid - Full-Stack Engineer & Tech Entrepreneur">
+    <title>Mustafa Hamid | Systems & AI Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Custom Sliding Loading Screen -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-bg"></div>
+        <div class="loader-content">
+            <div class="loader-title">&lt;MustafaHamid /&gt;</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-status">Initializing Academic Record...</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-outline" id="cursor-outline"></div>
+
+    <canvas id="webgl-bg"></canvas>
+    <div id="grid-overlay" class="grid-lines-overlay"></div>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">&lt;MustafaHamid /&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#hero">About</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#vision">Goals</a></li>
+                <li><a href="#certifications">Credentials</a></li>
+                <li><a href="#extracurriculars">Extracurriculars</a></li>
+                <li><a href="index.html" class="highlight-gold">Back to Portfolio</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+                        <i class="fas fa-sun" id="theme-icon"></i>
+                    </button>
+                </li>
+                <li>
+                    <button id="music-toggle" class="theme-toggle-btn" aria-label="Play/Pause Background Music" title="Play Original Music">
+                        <i class="fas fa-music" id="music-icon"></i>
+                    </button>
+                    <!-- Hidden audio element for the music player -->
+                    <audio id="bg-music" preload="auto"></audio>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero fade-in" style="padding-top: 150px;">
+            <div class="hero-content">
+                <span class="badge highlight-gold">Scholarship Candidate & Prospective Student <span class="custom-emoji" style="margin-left: 0.25rem; margin-right: 0;">award</span></span>
+                <h2>Mustafa Hamid</h2>
+                <h1><span class="highlight-core">Academic Profile</span> & Vision</h1>
+                <p class="subtitle" style="max-width: 800px; margin: 0 0 3rem 0; text-align: left;">
+                    A 17-year-old Full-Stack Engineer and Tech Entrepreneur applying for higher education and scholarship programs. Seeking to study Computer Science and Artificial Intelligence to build the next generation of high-performance web systems.
+                </p>
+                <div class="hero-cta" style="justify-content: flex-start;">
+                    <a href="#leadership" class="btn btn-primary">Review Academic Merits</a>
+                    <a href="#vision" class="btn btn-secondary">My Vision</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section id="leadership" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">01 // <span class="custom-emoji">rocket</span></span>
+                    <h2>Leadership</h2>
+                    <p class="section-accent-text">Community Management</p>
+                </div>
+                <div class="section-content">
+                    <div class="job-block">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Technical Infrastructure & Community Manager</h3>
+                                <span class="job-sub">Tier-1 Creator Ecosystem (<span class="highlight-metrics">15 Million+ Subscribers</span>)</span>
+                            </div>
+                        </div>
+                        <p class="job-desc">
+                            Demonstrated exceptional youth leadership by managing and scaling digital communities for a massive global audience. I engineered custom automation bots, moderated interactions, and oversaw the structural health of an ecosystem containing millions of users. This role demanded immense responsibility, crisis management skills, and the ability to innovate technical solutions under pressure.
+                        </p>
+                        <div class="tags">
+                            <span class="highlight-tech">Leadership</span><span class="highlight-tech">Crisis Management</span><span class="highlight-tech">Automation</span><span class="highlight-core">Scale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">02 // <span class="custom-emoji">book</span></span>
+                    <h2>Goals</h2>
+                    <p class="section-accent-text">Academic Vision</p>
+                </div>
+                <div class="section-content">
+                    <div class="job-block">
+                        <p class="job-desc" style="font-size: 1.1rem; line-height: 1.8;">
+                            I am applying to study Computer Science and Artificial Intelligence because I believe the future of global infrastructure relies on efficient, low-latency AI execution at the edge. My ultimate goal is to pioneer local-first AI architectures that empower users without compromising privacy or hardware limits.
+                            <br><br>
+                            A scholarship will allow me to focus entirely on my rigorous academic coursework and research, giving me the resources to transition my self-taught engineering skills into formal academic excellence. I am eager to collaborate with professors, join robotics and computing clubs, and bring my real-world startup experience to the campus community.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">03 // <span class="custom-emoji">award</span></span>
+                    <h2>Credentials</h2>
+                    <p class="section-accent-text">Professional Development</p>
+                </div>
+                <div class="section-content">
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Global Honors & Specialized Training</h3>
+                            <span class="edu-inst">Industry Validated</span>
+                        </div>
+                        <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+                            <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--text-primary);">
+                                <strong class="highlight-gold" style="font-size: 1.2rem;">Google Gemini API Competition • Global Honoree</strong><br>
+                                Recognized globally by Google engineers for developing <a href="https://devpost.com/software/clausemind-emidfp" target="_blank" style="color: inherit; text-decoration: underline;" title="View Hackathon Submission">"ClauseMind"</a>, an advanced AI platform specializing in semantic document parsing.
+                            </li>
+                            <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--secondary-color);">
+                                <a href="https://learners.growthschool.io/certificate/fe88cf0f-d45c-45e1-994e-85c42c622615" target="_blank" style="text-decoration: none;"><strong class="highlight-tech" style="font-size: 1.2rem;">Growth School Generative AI Workshop (Feb 2026) <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i></strong></a><br>
+                                Engaged in highly technical professional development focused on the future of generative AI systems and large language models.
+                                                        <details style="margin-top: 1rem; cursor: pointer;">
+                             <summary style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.85rem; display: inline-block;">[+] View Certificate</summary>
+                             <div style="margin-top: 1rem; border: 1px solid var(--border-color); border-radius: 4px; padding: 1.5rem; background: var(--bg-secondary); text-align: center;">
+                                 <p style="margin-bottom: 1rem; color: var(--text-color); font-size: 0.95rem;">To view or download the certificate directly in high resolution:</p>
+                                 <a href="./Growth school.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.6rem 1.5rem;">Open Certificate PDF</a>
+                             </div>
+                         </details>
+
+                            </li>
+                            <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--text-primary);">
+                                <strong class="highlight-core" style="font-size: 1.2rem;">Berlitz Certification (Nov 2025)</strong><br>
+                                Formal certification in English language communication and customer service, demonstrating elite soft skills and global readiness.
+                            </li>
+                            <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--secondary-color);">
+                            <strong class="highlight-tech" style="font-size: 1.2rem;">Iman Gadhzi Dropshipping Course (2025)</strong><br/>
+                            Completed comprehensive e‑commerce training covering Shopify store setup, product sourcing, and digital marketing strategies.
+                        </li>
+                        <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--text-primary);">
+                            <strong class="highlight-tech" style="font-size: 1.2rem;">Shopify & Marketing Experience</strong><br/>
+                            Built and managed multiple Shopify stores, optimized conversion funnels, and executed SEO/SEM campaigns.
+                        </li>
+                        <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--secondary-color);">
+                            <strong class="highlight-core" style="font-size: 1.2rem;">Reading List</strong><br/>
+                            • Lord of Mysteries (Wu Yi) – modern fantasy & philosophy<br/>
+                            • Meditations – Marcus Aurelius<br/>
+                            • Man’s Search for Meaning – Viktor Frankl<br/>
+                            • Thinking, Fast and Slow – Daniel Kahneman
+                        </li>
+                                                <li style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--text-primary);">
+                            <strong class="highlight-core" style="font-size: 1.2rem;">Deloitte Australia Data Analytics Job Simulation (Forage) – June 2026</strong><br/>
+                            <p style="margin-bottom: 0.5rem;">Completed a Deloitte job simulation involving data analysis and forensic technology.</p>
+                            <p style="margin-bottom: 0.5rem;">Created a data dashboard using Tableau.</p>
+                            <p style="margin-bottom: 1rem;">Used Excel to classify data and draw business conclusions.</p>
+                            <div style="margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <span style="font-size: 0.85rem; font-weight: 600; font-family: var(--font-mono); text-transform: uppercase;">Skills Acquired:</span>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">COMPUTER NETWORKING</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">DATA ANALYSIS</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">DATA MODELING</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">DATA STRUCTURES</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">DATA VISUALIZATION TOOLS</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">FORMAL COMMUNICATION</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">LOG ANALYSIS</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">PLANNING</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">PROGRAMMING</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">PYTHON PROGRAMMING</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">SOFTWARE DEVELOPMENT</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">SPREADHEET SKILLS</span>
+                                    <span style="display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); padding: 0.25rem 0.6rem; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.02); color: var(--text-color);">WEB SECURITY</span>
+                                </div>
+                            </div>
+                             <details style="margin-top: 1rem; cursor: pointer;">
+                                 <summary style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.85rem; display: inline-block;">[+] View Certificate</summary>
+                                 <div style="margin-top: 1rem; border: 1px solid var(--border-color); border-radius: 4px; padding: 1.5rem; background: var(--bg-secondary); text-align: center;">
+                                     <p style="margin-bottom: 1rem; color: var(--text-color); font-size: 0.95rem;">To view or download the certificate directly in high resolution:</p>
+                                     <a href="./Detroit certificate.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.6rem 1.5rem;">Open Certificate PDF</a>
+                                 </div>
+                             </details>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extracurriculars -->
+        <section id="extracurriculars" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">04 // <span class="custom-emoji">palette</span></span>
+                    <h2>Extracurriculars</h2>
+                    <p class="section-accent-text">The Human Element</p>
+                </div>
+                <div class="section-content">
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Personal Philosophy & Side Projects</h3>
+                        </div>
+                        <p class="edu-desc" style="font-size: 1.05rem;">
+                            Colleges don't just accept resumes; they accept people. Beyond formal coursework, my true passion lies in diving into code—spending my free hours brainstorming, architecting, and launching side projects. I am deeply driven by the desire to build tools that make human lives easier and more efficient. For me, software engineering isn't just a technical skill; it is my primary creative outlet and a lifelong pursuit of solving real-world problems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-content-bottom">
+            <div class="logo">&lt;MustafaHamid /&gt;</div>
+            <div class="footer-copy">© 2026 Mustafa Hamid. Hand-optimized for modern browser standard deployment
+                engines.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

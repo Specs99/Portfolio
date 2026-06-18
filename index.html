@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mustafa Hamid - Full-Stack Engineer & Tech Entrepreneur">
+    <title>Mustafa Hamid | Systems & AI Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Custom Sliding Loading Screen -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-bg"></div>
+        <div class="loader-content">
+            <div class="loader-title">&lt;MustafaHamid /&gt;</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-status">Initializing Neural Interface...</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-outline" id="cursor-outline"></div>
+
+    <canvas id="webgl-bg"></canvas>
+    <div id="grid-overlay" class="grid-lines-overlay"></div>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">&lt;MustafaHamid /&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#profile">About</a></li>
+                <li><a href="#infrastructure">Ecosystem</a></li>
+                <li><a href="#scale">Scale Operations</a></li>
+                <li><a href="#matrix">Matrix</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admissions.html" class="highlight-gold">Academic Profile</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+                        <i class="fas fa-sun" id="theme-icon"></i>
+                    </button>
+                </li>
+                <li>
+                    <button id="music-toggle" class="theme-toggle-btn" aria-label="Play/Pause Background Music" title="Play Original Music">
+                        <i class="fas fa-music" id="music-icon"></i>
+                    </button>
+                    <!-- Hidden audio element for the music player -->
+                    <audio id="bg-music" preload="auto"></audio>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero fade-in">
+            <div class="hero-content">
+                <span class="badge highlight-gold">Google Gemini API Competition • Global Honoree <span class="custom-emoji"
+                        style="margin-left: 0.25rem; margin-right: 0;">award</span></span>
+                <h2>Engineering High-Performance <span class="highlight-core">AI Systems</span> & Web Platforms</h2>
+                <h1><span class="highlight-core">Full-Stack Engineer</span> & Tech Entrepreneur</h1>
+                <p class="subtitle">A 17-year-old product builder specializing in client-side local AI execution,
+                    low-latency development environments, custom browser systems engineering, and managing large-scale
+                    infrastructure arrays for millions of users.</p>
+                <div class="hero-cta">
+                    <a href="#infrastructure" class="btn btn-primary">Explore Project Ecosystem</a>
+                    <a href="#contact" class="btn btn-secondary">Secure Connection</a>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">15M+ <span class="custom-emoji">nodes</span></div>
+                        <div class="stat-label">User Reach Architected</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Global <span class="custom-emoji">award</span></div>
+                        <div class="stat-label">API Award Selection</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8+ <span class="custom-emoji">stacks</span></div>
+                        <div class="stat-label">Production Frameworks</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Local <span class="custom-emoji">core</span></div>
+                        <div class="stat-label">LLM Deployments</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 // Executive Profile -->
+        <section id="profile" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">01 // <span class="custom-emoji">profile</span></span>
+                    <h2>Executive Profile</h2>
+                    <p class="section-accent-text">The Interface of Code, Logic & Scaling</p>
+                </div>
+                <div class="section-main">
+                    <p class="lead-text">I am a technology-driven developer focused on building fast, responsive, and
+                        privacy-first web environments. As the co-founder of the InciVerse initiative, I translate
+                        technical complexity into intuitive, scalable digital products.</p>
+                    <p class="body-text">My workflow extends beyond traditional scripting into structural systems
+                        configuration—specializing in local browser LLM inference models, resource-constrained
+                        environment tuning, and automated digital deployment channels.</p>
+
+                    <div class="specs-grid">
+                        <div class="spec-card">
+                            <span class="spec-label">Location</span>
+                            <span class="spec-value">Karachi, PK</span>
+                        </div>
+                        <div class="spec-card">
+                            <span class="spec-label">Workstations</span>
+                            <span class="spec-value">RTX 3080 / Ryzen 5</span>
+                        </div>
+                        <div class="spec-card">
+                            <span class="spec-label">Academic Status</span>
+                            <span class="spec-value">O-Level Student</span>
+                        </div>
+                        <div class="spec-card">
+                            <span class="spec-label">Google Recognition</span>
+                            <span class="spec-value">Honorable Mention + Gemini 3 Hackathon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 // Digital Infrastructure -->
+        <section id="infrastructure" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">02 // <span class="custom-emoji">ecosystem</span></span>
+                    <h2>Digital Infrastructure</h2>
+                    <p class="section-accent-text">The Shipped App Ecosystem</p>
+                    <p class="sidebar-desc">Production platforms, background automation engines, and system utilities
+                        designed from scratch.</p>
+                </div>
+                <div class="section-main">
+
+                    <!-- Sub-category: Artificial Intelligence & Local Web Core -->
+                    <div class="ecosystem-group">
+                        <h3 class="group-title">Artificial Intelligence & Local Web Core</h3>
+                        <div class="project-list">
+                            <!-- ClauseMind -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>ClauseMind <span class="row-badge highlight-gold">Google Award</span></h4>
+                                    <div class="project-links">
+                                        <a href="https://devpost.com/software/clausemind-emidfp" target="_blank" aria-label="Devpost Submission" title="View Hackathon Submission"><i class="fas fa-trophy highlight-gold"></i></a>
+                                        <a href="https://clausemind.vercel.app" target="_blank"
+                                            aria-label="Visit ClauseMind"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="https://github.com/Specs99" target="_blank" aria-label="GitHub"><i
+                                                class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">An advanced, multi-functional AI platform engineered under the
+                                    InciVerse banner specializing in semantic document parsing, context compression, and
+                                    deep metadata insight generation. Recognized globally by Google engineers.</p>
+                                <div class="tags">
+                                    <span class="highlight-tech">Gemini API</span><span class="highlight-tech">Next.js</span><span class="highlight-tech">Node.js</span><span class="highlight-core">AI
+                                        Orchestration</span>
+                                </div>
+                            </div>
+                            <!-- Aetheros AI -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Aetheros AI</h4>
+                                    <div class="project-links">
+                                        <a href="https://aetheros-ai.vercel.app/" target="_blank"
+                                            aria-label="Live Site"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="https://github.com/Specs99" target="_blank" aria-label="GitHub"><i
+                                                class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">A privacy-first web interface built to run optimized LLMs
+                                    completely locally inside the user's browser client environment using WebGPU.
+                                    Eliminates recurring server token costs and external API latency blocks.</p>
+                                <div class="tags">
+                                    <span>WebGPU</span><span>ONNX Runtime</span><span>Client Inference</span><span>JS
+                                        Core</span>
+                                </div>
+                            </div>
+                            <!-- Luxen AI -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Luxen AI</h4>
+                                    <div class="project-links">
+                                        <a href="https://ai.studio/apps/6a0db868-2c83-4204-acfa-f624499a763f?fullscreenApplet=true"
+                                            target="_blank" aria-label="Live Site"><i
+                                                class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">An intelligent vision enhancement web system leveraging neural
+                                    networks to perform automated upscaling, clarity restoration, and advanced aesthetic
+                                    filtering transitions directly on asset packages.</p>
+                                <div class="tags">
+                                    <span>Python AI</span><span>TensorFlow</span><span>Web Integration</span><span>Image
+                                        Processing</span>
+                                </div>
+                            </div>
+                            <!-- Personal AI Agent Architecture -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Personal AI Agent Architecture</h4>
+                                    <div class="project-links">
+                                        <a href="#gateways" aria-label="Contact for Source"><i
+                                                class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">A background-resident automation framework that tracks workspace
+                                    contexts, handles localized knowledge-base embedding tasks, and provides rapid
+                                    macro-triggered code insights.</p>
+                                <div class="tags">
+                                    <span>Ollama Loop</span><span>Vector Databases</span><span>Python
+                                        Loops</span><span>Gemma</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-category: Developer Environments & Native Desktop Utilities -->
+                    <div class="ecosystem-group">
+                        <h3 class="group-title">Developer Environments & Native Desktop Utilities</h3>
+                        <div class="project-list">
+                            <!-- Aether OS IDE -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Aether OS IDE</h4>
+                                    <div class="project-links">
+                                        <a href="https://aetheros-ai.vercel.app/" target="_blank"
+                                            aria-label="Live Site"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">A highly optimized, web-integrated IDE customized for immediate
+                                    responsiveness. Houses built-in local LLM generation protocols, precise workspace
+                                    state saves, and customizable keybind mapping engines.</p>
+                                <div class="tags">
+                                    <span>TypeScript</span><span>WebSockets</span><span>Ollama Core</span><span>State
+                                        Management</span>
+                                </div>
+                            </div>
+                            <!-- Windows Security Lock & Optimizer -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Windows Security Lock & Optimizer</h4>
+                                    <div class="project-links">
+                                        <a href="https://drive.google.com/drive/folders/1JRGIhEByJvOlt9UXvtFGwF1krb8DmsV9?usp=sharing"
+                                            target="_blank" aria-label="Download from Google Drive"><i
+                                                class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">A native operating system companion app tailored to aggressively
+                                    minimize system DPC input latency, clean system thread queues, manage system-level
+                                    RAM pools, and seal security configurations against intrusions.</p>
+                                <div class="tags">
+                                    <span>Python Core</span><span>C# Windows API</span><span>Memory Optimizations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-category: Browser Enhancements & Automation Controllers -->
+                    <div class="ecosystem-group">
+                        <h3 class="group-title">Browser Enhancements & Automation Controllers</h3>
+                        <div class="project-list">
+                            <!-- Nova Themes -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Nova Themes</h4>
+                                    <div class="project-links">
+                                        <a href="https://drive.google.com/drive/folders/1JRGIhEByJvOlt9UXvtFGwF1krb8DmsV9?usp=sharing"
+                                            target="_blank" aria-label="Download from Google Drive"><i
+                                                class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">A cross-browser UI enhancement suite for Google Chrome and other
+                                    Chromium-based browsers. Adds dynamic live wallpapers, interactive visual shaders,
+                                    and unified interface modifications for a fully personalized browsing experience.
+                                </p>
+                                <div class="tags">
+                                    <span>Chrome Extension</span><span>Manifest V3</span><span>CSS
+                                        Shaders</span><span>DOM Manipulation</span>
+                                </div>
+                            </div>
+
+                            <!-- SPecs Weblock -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Specs Weblock</h4>
+                                    <div class="project-links">
+                                        <a href="https://drive.google.com/drive/folders/17Rbb55aTxVVacxHjJEkVlM_fWYLg9AGi?usp=sharing"
+                                            target="_blank" aria-label="Download from Google Drive"><i
+                                                class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">A hard-coded productivity extension implementing precise
+                                    scheduled domain blocking mechanisms via encrypted security lock screens.</p>
+                                <div class="tags">
+                                    <span>Chrome API</span><span>Web Request Filters</span>
+                                </div>
+                            </div>
+                            <!-- Instagram Auto Bot -->
+                            <div class="project-row">
+                                <div class="project-header">
+                                    <h4>Instagram Auto Bot</h4>
+                                    <div class="project-links">
+                                        <a href="#gateways" aria-label="Contact for Source"><i
+                                                class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                                <p class="project-desc">An intelligent AI bot that reads and trains itself directly from
+                                    your DMs to mimic your specific persona. It automatically replies to friends and
+                                    followers using personalized conversational styles learned from your message
+                                    history.</p>
+                                <div class="tags">
+                                    <span>Node.js Core</span><span>AI Persona</span><span>NLP
+                                        Training</span><span>Automation Framework</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 // Large-Scale Infrastructure -->
+        <section id="scale" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">03 // <span class="custom-emoji">ops.scale</span></span>
+                    <h2>Large-Scale Infrastructure</h2>
+                    <p class="section-accent-text">Community & Technical Scaling Operations</p>
+                    <p class="sidebar-desc">Engineering interaction mechanics and bot logic for multi-million user
+                        entertainment ecosystems.</p>
+                </div>
+                <div class="section-main">
+
+                    <div class="job-block">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Technical Infrastructure & Community Manager</h3>
+                                <span class="job-sub">Tier-1 Creator Ecosystem (<span class="highlight-metrics">15 Million+ Subscribers</span>)</span>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-tag">Core Track</span>
+                                <span class="job-tag">Remote Execution</span>
+                            </div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Designed and maintained the underlying server architecture, security protocols, and
+                                channel matrices for a community reaching millions of global nodes.</li>
+                            <li>Developed, configured, and managed customized automated moderation bots and data sync
+                                webhooks to sustain high-frequency server activities under heavy loads.</li>
+                            <li>Led cross-functional moderation networks and engineered optimized event engagement logic
+                                to reduce user retention drop-offs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-block">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Head Technical Discord Manager</h3>
+                                <span class="job-sub">Strategic Digital Creator Channel (100K+ Subscribers)</span>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-tag">Operations Track</span>
+                                <span class="job-tag">Remote Execution</span>
+                            </div>
+                        </div>
+                        <ul class="job-details">
+                            <li>Supervised complete automated community operations pipelines, staff onboarding rulesets,
+                                and webhook automated notification chains.</li>
+                            <li>Coordinated digital asset announcements and streamlined user reporting structures to
+                                minimize incident resolution times.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 // Core Capabilities -->
+        <section id="matrix" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">04 // <span class="custom-emoji">matrix</span></span>
+                    <h2>Core Capabilities</h2>
+                    <p class="section-accent-text">The Technical Skill Matrix</p>
+                    <p class="sidebar-desc">Granular engineering layers, stack proficiencies, and business frameworks.
+                    </p>
+                </div>
+                <div class="section-main">
+                    <div class="matrix-grid">
+                        <div class="matrix-column">
+                            <h4>Full-Stack & Systems</h4>
+                            <ul class="matrix-list">
+                                <li>JavaScript (ES6+)</li>
+                                <li>TypeScript</li>
+                                <li>Python Core</li>
+                                <li>Node.js / Next.js</li>
+                                <li>HTML5 / CSS Layouts</li>
+                            </ul>
+                        </div>
+                        <div class="matrix-column">
+                            <h4>AI & Performance</h4>
+                            <ul class="matrix-list">
+                                <li>Google Gemini API</li>
+                                <li>Ollama Local Runtime</li>
+                                <li>Gemma Architecture</li>
+                                <li>Storage RAM Tiering</li>
+                                <li>Windows Low-Latency</li>
+                                <li>Hardware optimization & FPS tuning (Cities: Skylines 2, War Thunder)</li>
+                            </ul>
+                        </div>
+                        <div class="matrix-column">
+                            <h4>Venture & Design</h4>
+                            <ul class="matrix-list">
+                                <li>UI/UX Architecture</li>
+                                <li>Digital Product Logistics</li>
+                                <li>Dropshipping Networks</li>
+                                <li>Financial Asset Trading</li>
+                                <li>Agile Problem Solving</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 // Academic Foundations -->
+        <section id="education" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">05 // <span class="custom-emoji">academics</span></span>
+                    <h2>Academic Foundations</h2>
+                    <p class="section-accent-text">Academic Frameworks & Self-Directed Track</p>
+                    <p class="sidebar-desc">Balancing standard board metrics with intensive technical deep-dives.</p>
+                </div>
+                <div class="section-main">
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>O-Level Secondary Education</h3>
+                            <span class="edu-inst">Cambridge Assessment International Education</span>
+                        </div>
+                        <p class="edu-desc">Core specializations centered in Computer Science structures, Advanced
+                            Physics configurations, Mathematics methodologies, and English communicative standards.
+                            Consistently aligning institutional theory with raw computational validation.</p>
+                    </div>
+
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Continuous Track</h3>
+                            <span class="edu-inst">Self-Directed Systems Engineering Track | Autonomous Deep
+                                Diving</span>
+                        </div>
+                        <p class="edu-desc">Focusing multi-hour learning pipelines into full-stack state mechanics,
+                            machine learning interface loops, Manifest V3 extensions engineering, hardware benchmarking
+                            matrices, and client-side computational optimization.</p>
+                    </div>
+
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Professional Training & Mentorships</h3>
+                            <span class="edu-inst">Extracurricular Development</span>
+                        </div>
+                        <p class="edu-desc"><a href="https://learners.growthschool.io/certificate/fe88cf0f-d45c-45e1-994e-85c42c622615" target="_blank" style="text-decoration: none;"><strong class="highlight-gold">Growth School Generative AI Workshop (Feb 2026):</strong></a> Engaged in technical professional development focused on Generative AI systems.
+                            <details style="margin-top: 0.75rem; margin-bottom: 0.75rem; cursor: pointer;">
+                                <summary style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.85rem; display: inline-block;">[+] View Certificate</summary>
+                                <div style="margin-top: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; background: #fff;">
+                                    <object data="./fe88cf0f-d45c-45e1-994e-85c42c622615_cert.pdf" type="application/pdf" width="100%" height="450px">
+                                        <p style="padding: 1rem; color: #333;">Your browser does not support PDF previews. <a href="./fe88cf0f-d45c-45e1-994e-85c42c622615_cert.pdf" target="_blank" style="color: #007bb5; text-decoration: underline;">Click here to download the certificate</a>.</p>
+                                    </object>
+                                </div>
+                            </details>
+                            <br><strong class="highlight-gold">Berlitz Certification (Nov 2025):</strong> Enrolled in the Berlitz English language communication and customer service program.</p>
+                    </div>
+
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Personal Philosophy & Side Projects</h3>
+                            <span class="edu-inst">The Human Element</span>
+                        </div>
+                        <p class="edu-desc">Beyond formal work, my true passion lies in diving into code—spending my free hours brainstorming, architecting, and launching side projects. I am deeply driven by the desire to build tools that make human lives easier and more efficient. Software engineering isn't just a technical skill for me; it is my primary creative outlet.</p>
+                    </div>
+                </div>
+            </div>
+        <section id="skills" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">05 // <span class="custom-emoji">star</span></span>
+                    <h2>Additional Skills &amp; Knowledge</h2>
+                    <p class="section-accent-text">Continuous Learning & Research</p>
+                </div>
+                <div class="section-main">
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Iman Gadzhi Dropshipping Program</h3>
+                            <span class="edu-inst">E-Commerce & Venture Operations (Completed 2025)</span>
+                        </div>
+                        <p class="edu-desc">Completed specialized training covering product sourcing logistics, digital conversion funnels, brand scaling methodology, and growth marketing frameworks.</p>
+                    </div>
+
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Shopify Platform Development & Marketing</h3>
+                            <span class="edu-inst">Infrastructure Scaling & Growth Marketing</span>
+                        </div>
+                        <p class="edu-desc">Built and maintained high-converting custom Shopify setups, implementing conversion-rate optimization (CRO), custom automation integration, email nurture sequences, and SEM strategies.</p>
+                    </div>
+
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Philosophy &amp; Psychology Study</h3>
+                            <span class="edu-inst">Cognitive Models & Theoretical Frameworks</span>
+                        </div>
+                        <p class="edu-desc">Deep engagement with classical and modern conceptual texts including <em>Meditations</em> (Marcus Aurelius), <em>Man’s Search for Meaning</em> (Viktor Frankl), <em>Thinking, Fast and Slow</em> (Daniel Kahneman), and <em>The Republic</em> (Plato) to refine systematic and analytical problem-solving abilities.</p>
+                    </div>
+
+                    <div class="education-block">
+                        <div class="education-header">
+                            <h3>Literary Influence</h3>
+                            <span class="edu-inst">Creative Modeling & Metaphysical Intrigue</span>
+                        </div>
+                        <p class="edu-desc">A study of the complex narrative architecture, psychological profiles, and worldbuilding concepts in <em>Lord of Mysteries</em> (Wu Yi) as a tool for driving creative software architecture and model brainstorming.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+</section>
+
+        <!-- 06 // Gateways -->
+        <section id="contact" class="section border-top fade-in">
+            <div class="section-layout">
+                <div class="section-sidebar">
+                    <span class="section-num">06 // <span class="custom-emoji">gateways</span></span>
+                    <h2>Gateways</h2>
+                    <p class="section-accent-text">Initialize Contact Network</p>
+                    <p class="sidebar-desc">Open a secure channel for technical collaborations, academic reviews, or
+                        product initiatives.</p>
+                </div>
+                <div class="section-main">
+                    <div class="contact-grid">
+                        <a href="mailto:mustafahamid200917@gmail.com" class="contact-card">
+                            <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-card-body">
+                                <span class="contact-label">Secure Email</span>
+                                <span class="contact-val">mustafahamid200917@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Specs99" target="_blank" class="contact-card">
+                            <div class="contact-card-icon"><i class="fab fa-github"></i></div>
+                            <div class="contact-card-body">
+                                <span class="contact-label">GitHub Repository</span>
+                                <span class="contact-val">Review Active Repositories</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mustafa-hamid-specs/" target="_blank" class="contact-card">
+                            <div class="contact-card-icon"><i class="fab fa-linkedin"></i></div>
+                            <div class="contact-card-body">
+                                <span class="contact-label">LinkedIn Gateway</span>
+                                <span class="contact-val">Professional Identity Verification</span>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/iknow_mustafa/" target="_blank" class="contact-card">
+                            <div class="contact-card-icon"><i class="fab fa-instagram"></i></div>
+                            <div class="contact-card-body">
+                                <span class="contact-label">Instagram</span>
+                                <span class="contact-val">@iknow_mustafa</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <h3 class="form-title">Get In Touch</h3>
+                        <h4 class="form-subtitle">Let's Talk</h4>
+                        <p class="form-intro">Have a project in mind or just want to say hi? I'd love to hear from you!
+                        </p>
+
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-name">Name</label>
+                                    <input type="text" id="form-name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-email">Email</label>
+                                    <input type="email" id="form-email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-message">Message</label>
+                                <textarea id="form-message" rows="4"
+                                    placeholder="Tell me about your project or just say hi!" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content-bottom">
+            <div class="logo">&lt;MustafaHamid /&gt;</div>
+            <div class="footer-copy">© 2026 Mustafa Hamid. Hand-optimized for modern browser standard deployment
+                engines.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
