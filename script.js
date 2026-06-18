@@ -172,6 +172,7 @@ function initWebGLBg() {
         uniform float uTime;
         uniform vec2 uResolution;
         uniform vec2 uMouse;
+        uniform float uAlphaMultiplier;
         varying float vAlpha;
         void main() {
             // Gentle wave motions
@@ -200,8 +201,8 @@ function initWebGLBg() {
             // Dynamic sizing
             gl_PointSize = aPosition.z + sin(uTime * 2.0 + aPosition.x) * 0.5;
             
-            // Gentle alpha pulsing
-            vAlpha = 0.08 + sin(uTime * 0.5 + aPosition.y) * 0.04;
+            // Gentle alpha pulsing with theme multiplier
+            vAlpha = uAlphaMultiplier * (0.08 + sin(uTime * 0.5 + aPosition.y) * 0.04);
         }
     `;
 
@@ -252,6 +253,7 @@ function initWebGLBg() {
     const resolutionLoc = gl.getUniformLocation(program, 'uResolution');
     const mouseLoc = gl.getUniformLocation(program, 'uMouse');
     const colorLoc = gl.getUniformLocation(program, 'uColor');
+    const alphaMultiplierLoc = gl.getUniformLocation(program, 'uAlphaMultiplier');
 
     let particles = [];
     const isMobile = window.innerWidth < 768;
@@ -308,9 +310,11 @@ function initWebGLBg() {
         if (document.body.classList.contains('light-mode')) {
             gl.clearColor(0.988, 0.988, 0.988, 1.0); // #fcfcfc (pure light)
             gl.uniform3f(colorLoc, 0.05, 0.05, 0.05); // black particles
+            gl.uniform1f(alphaMultiplierLoc, 4.0); // 4x opacity boost for high visibility on light background
         } else {
             gl.clearColor(0.02, 0.02, 0.03, 1.0); // #060608 (pure dark)
             gl.uniform3f(colorLoc, 0.6, 0.6, 0.7); // light blueish glowing particles
+            gl.uniform1f(alphaMultiplierLoc, 1.0); // normal glow
         }
         gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -380,9 +384,9 @@ function initCanvas2D(canvas) {
 
         // Dynamically set particle colors based on light/dark mode
         if (document.body.classList.contains('light-mode')) {
-            ctx.fillStyle = 'rgba(20, 20, 30, 0.15)'; // dark particles
+            ctx.fillStyle = 'rgba(20, 20, 30, 0.45)'; // dark particles (opacity boosted for light background)
         } else {
-            ctx.fillStyle = 'rgba(150, 150, 165, 0.1)'; // light glowing particles
+            ctx.fillStyle = 'rgba(150, 150, 165, 0.15)'; // light glowing particles
         }
         particles.forEach(p => {
             p.x += p.vx;
