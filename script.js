@@ -292,13 +292,9 @@ function initWebGLBg() {
     function render() {
         const time = (Date.now() - startTime) / 1000.0;
         
-        if (document.body.classList.contains('light-mode')) {
-            gl.clearColor(0.988, 0.988, 0.988, 1.0); // #fcfcfc
-            gl.uniform3f(colorLoc, 0.05, 0.05, 0.05); // near black particles
-        } else {
-            gl.clearColor(0.02, 0.02, 0.03, 1.0); // #060608
-            gl.uniform3f(colorLoc, 0.6, 0.6, 0.7); // light blueish particles
-        }
+        // Unified dark background and glowing particles for both themes
+        gl.clearColor(0.02, 0.02, 0.03, 1.0); // #060608
+        gl.uniform3f(colorLoc, 0.6, 0.6, 0.7); // light blueish particles
         gl.clear(gl.COLOR_BUFFER_BIT);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -350,18 +346,10 @@ function initCanvas2D(canvas) {
     });
 
     function draw() {
-        if (document.body.classList.contains('light-mode')) {
-            ctx.fillStyle = '#fcfcfc';
-        } else {
-            ctx.fillStyle = '#060608';
-        }
+        // Unified dark background and particles for both themes
+        ctx.fillStyle = '#060608';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        if (document.body.classList.contains('light-mode')) {
-            ctx.fillStyle = 'rgba(20, 20, 30, 0.15)';
-        } else {
-            ctx.fillStyle = 'rgba(150, 150, 165, 0.1)';
-        }
+        ctx.fillStyle = 'rgba(150, 150, 165, 0.1)';
         particles.forEach(p => {
             p.x += p.vx;
             p.y += p.vy;
