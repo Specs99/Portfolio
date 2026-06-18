@@ -32,6 +32,10 @@
     {
       "src": "*.pdf",
       "use": "@vercel/static"
+    },
+    {
+      "src": "logo.png",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
