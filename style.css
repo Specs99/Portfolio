@@ -294,6 +294,10 @@ a {
     color: var(--text-primary);
 }
 
+.mobile-menu-toggle {
+    display: none;
+}
+
 /* --- Hero Section --- */
 .hero {
     min-height: 90vh;
@@ -904,6 +908,13 @@ footer {
 
 /* --- Responsive Layout Rules --- */
 @media (max-width: 992px) {
+    .custom-cursor-dot,
+    .custom-cursor-outline {
+        display: none !important;
+    }
+    body, html, a, button, input, textarea, select {
+        cursor: auto !important;
+    }
     .section-layout {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -918,16 +929,149 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+    }
+    .nav-content {
+        padding: 0.85rem 1.25rem;
+        height: 100%;
+    }
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.35rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: color var(--transition);
+        z-index: 1001;
+    }
     .nav-links {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: var(--bg-nav);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 2.5rem 1.5rem;
+        gap: 1.5rem;
+        transform: translateY(-150%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+        border-bottom: 1px solid var(--border-color);
+        overflow-y: auto;
+        align-items: stretch;
+    }
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links a {
+        display: block;
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        transition: background-color var(--transition);
+    }
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    body.light-mode .nav-links a:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+    .nav-links li:has(#theme-toggle),
+    .nav-links li:has(#music-toggle) {
+        display: inline-block;
+        width: auto;
+        margin: 0 0.5rem;
+    }
+    .nav-links li:has(#theme-toggle) button,
+    .nav-links li:has(#music-toggle) button {
+        font-size: 1.25rem;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        margin: 0 auto;
+        display: inline-flex;
+    }
+    .section {
+        padding: 4rem 1.25rem;
+    }
+    .bg-alt > .section-layout {
+        padding: 4rem 1.25rem;
+    }
+    .hero {
+        padding: 6.5rem 1.25rem 3rem 1.25rem;
+        min-height: auto;
+    }
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    .hero h2 {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+    }
+    .hero .subtitle {
+        margin-bottom: 2rem;
+        font-size: 1rem;
+    }
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+        margin-bottom: 3.5rem;
+    }
+    .hero-cta .btn {
+        width: 100%;
+    }
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding-top: 2rem;
+    }
+    .stat-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .stat-item:nth-child(3),
+    .stat-item:nth-child(4) {
+        border-bottom: none;
+    }
+    .project-row {
+        padding: 1.25rem;
+    }
+    .job-block {
+        padding: 1.5rem;
+    }
+    .education-block {
+        padding: 1.5rem;
+    }
+    .contact-form-container {
+        padding: 1.75rem;
+        margin-top: 2.5rem;
+    }
+    .form-subtitle {
+        font-size: 1.5rem;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     .footer-content-bottom {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
-    }
-    .hero-cta {
-        flex-direction: column;
     }
 }
 
