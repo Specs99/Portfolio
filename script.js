@@ -145,6 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Fade out WebGL canvas as you scroll down
             webglCanvas.style.opacity = 1 - progress * 0.85;
+            
+            // Pause WebGL rendering when scrolled out of view to optimize mobile performance
+            window.isWebGLPaused = scrollY > heroBottom;
         }
     }, { passive: true });
 
@@ -251,7 +254,8 @@ function initWebGLBg() {
     const colorLoc = gl.getUniformLocation(program, 'uColor');
 
     let particles = [];
-    const count = 280; // Performance friendly particle pool
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 75 : 280; // Performance optimized for mobile screen processors
 
     function generateParticles() {
         particles = [];
@@ -290,11 +294,24 @@ function initWebGLBg() {
     const startTime = Date.now();
 
     function render() {
+        // Pause loop if scrolled past viewport (performance safeguard for mobile devices)
+        if (window.isWebGLPaused) {
+            requestAnimationFrame(render);
+            return;
+        }
+
         const time = (Date.now() - startTime) / 1000.0;
         
-        // Unified dark background and glowing particles for both themes
-        gl.clearColor(0.02, 0.02, 0.03, 1.0); // #060608
-        gl.uniform3f(colorLoc, 0.6, 0.6, 0.7); // light blueish particles
+        gl.useProgram(program);
+
+        // Dynamically toggle colors based on light/dark mode
+        if (document.body.classList.contains('light-mode')) {
+            gl.clearColor(0.988, 0.988, 0.988, 1.0); // #fcfcfc (pure light)
+            gl.uniform3f(colorLoc, 0.05, 0.05, 0.05); // black particles
+        } else {
+            gl.clearColor(0.02, 0.02, 0.03, 1.0); // #060608 (pure dark)
+            gl.uniform3f(colorLoc, 0.6, 0.6, 0.7); // light blueish glowing particles
+        }
         gl.clear(gl.COLOR_BUFFER_BIT);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -320,7 +337,8 @@ function initCanvas2D(canvas) {
     if (!ctx) return;
 
     let particles = [];
-    const count = 80;
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 30 : 80; // Performance friendly particle pool on mobiles
 
     function resize() {
         canvas.width = window.innerWidth;
@@ -346,10 +364,26 @@ function initCanvas2D(canvas) {
     });
 
     function draw() {
-        // Unified dark background and particles for both themes
-        ctx.fillStyle = '#060608';
+        // Pause loop if scrolled past viewport (performance safeguard for mobile devices)
+        if (window.isWebGLPaused) {
+            requestAnimationFrame(draw);
+            return;
+        }
+
+        // Dynamically toggle colors based on light/dark mode
+        if (document.body.classList.contains('light-mode')) {
+            ctx.fillStyle = '#fcfcfc'; // #fcfcfc (pure light)
+        } else {
+            ctx.fillStyle = '#060608'; // #060608 (pure dark)
+        }
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(150, 150, 165, 0.1)';
+
+        // Dynamically set particle colors based on light/dark mode
+        if (document.body.classList.contains('light-mode')) {
+            ctx.fillStyle = 'rgba(20, 20, 30, 0.15)'; // dark particles
+        } else {
+            ctx.fillStyle = 'rgba(150, 150, 165, 0.1)'; // light glowing particles
+        }
         particles.forEach(p => {
             p.x += p.vx;
             p.y += p.vy;
